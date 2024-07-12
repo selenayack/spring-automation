@@ -1,0 +1,69 @@
+server:
+  port: 8080
+  ssl:
+    enabled: false
+    certificate: ##classpath:sertifika.pem  sertifika crt dosyas?
+    certificate-private-key: ##classpath:sertifikakey.pem sertifika pem dosyas?
+    protocol: TLSv1.2
+
+spring.jpa:
+  database: POSTGRESQL
+  hibernate.ddl-auto: update
+  show-sql: true
+
+spring.datasource:
+  driverClassName: org.postgresql.Driver
+  url:  jdbc:postgresql://78.186.223.18:5432/automation_dev
+  username: postgres
+  password: mydevpasswd000
+spring:
+  web:
+      resources:  ##bu kısım static dosyaların nerede olacağını belirtir
+        static-locations: ## classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/sliderimages/,classpath:/homepageimages/
+  sql:
+    init:
+      platform: postgres
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: Automation
+    template:
+      ignore-size-limit-exceeded-exception:
+  jpa:
+    properties:
+      hibernate:
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      #swagger-ui ile boot-adminin cakismamasi icin instance degistirme
+      base-path: /actucator
+
+
+
+backup:
+  databaseName: "database_name"
+  serverName: "ServerName-TR"
+  serverIp: "95.214.177.230"
+  directory: "src/main/resources/sqlbackups/"
+  host: "remote server adress"
+  port: 22
+  username: "Administrator"
+  password: "yourpass"
+  remotePath: "C:\\Users\\Administrator\\Desktop\\yourpath\\"
+telegram:
+  username: "botUsername"
+  token: "botToken"
+  groupId: "botChatId"
+
+  ## JWT Login işlemi için kullanıcı adı ve şifre
+security:
+  username: "username"
+  password: "password"

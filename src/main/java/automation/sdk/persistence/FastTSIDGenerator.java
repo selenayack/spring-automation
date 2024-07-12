@@ -1,0 +1,28 @@
+/*
+ *
+ *  *
+ *  *  *
+ *  *  *  *  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *  *  *  *
+ *  *  *  *  Copyright (C) 2023 Dileksoft LLC  - All Rights Reserved.
+ *  *  *  *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  *  *  *  Proprietary and confidential.
+ *  *  *  *
+ *  *  *  *  Written by Yusuf E. Karanfil <yekaranfil@dileksoft.com>, May 2024
+ *  *  *
+ *  *
+ *
+ */
+
+package automation.sdk.persistence;
+
+import com.github.f4b6a3.tsid.Tsid;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.id.IdentifierGenerator;
+
+public class FastTSIDGenerator implements IdentifierGenerator {
+    @Override
+    public Object generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) {
+        return Tsid.fast().toString();
+    }
+}
